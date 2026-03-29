@@ -79,6 +79,13 @@ resource "azurerm_cdn_frontdoor_origin" "origin" {
   certificate_name_check_enabled = true
 }
 
+# CUSTOM DOMAIN
+resource "azurerm_cdn_frontdoor_custom_domain" "domain" {
+  name                     = "ghpro100-domain"
+  cdn_frontdoor_profile_id = azurerm_cdn_frontdoor_profile.afd.id
+  host_name                = "www.ghpro100.co.uk"
+}
+
 # ROUTE
 resource "azurerm_cdn_frontdoor_route" "route" {
   name                          = "route-all"
@@ -87,6 +94,10 @@ resource "azurerm_cdn_frontdoor_route" "route" {
 
   cdn_frontdoor_origin_ids = [
     azurerm_cdn_frontdoor_origin.origin.id
+  ]
+
+  cdn_frontdoor_custom_domain_ids = [
+    azurerm_cdn_frontdoor_custom_domain.domain.id
   ]
 
   supported_protocols    = ["Http", "Https"]
