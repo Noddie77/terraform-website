@@ -13,14 +13,14 @@ provider "azurerm" {
 		resource_provider_registrations		= "none"
 }
 
-resource "azurerm_resource_group" "rg" {
+data "azurerm_resource_group" "rg" {
   name     = "ghpro100-rg"
   location = "East US"
 }
 
 resource "azurerm_storage_account" "storage" {
   name                     = "ghpro100web" # change if needed
-  resource_group_name      = azurerm_resource_group.rg.name
+  resource_group_name      = data_resource_group.rg.name
   location                 = azurerm_resource_group.rg.location
 
   account_tier             = "Standard"
@@ -36,7 +36,7 @@ resource "azurerm_storage_account_static_website" "website" {
 
 resource "azurerm_cdn_frontdoor_profile" "afd" {
   name                = "ghpro100-afd"
-  resource_group_name = azurerm_resource_group.rg.name
+  resource_group_name = data_resource_group.rg.name
   sku_name            = "Standard_AzureFrontDoor"
 }
 
