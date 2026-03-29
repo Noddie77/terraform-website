@@ -71,8 +71,7 @@ resource "azurerm_cdn_frontdoor_origin" "origin" {
   cdn_frontdoor_origin_group_id = azurerm_cdn_frontdoor_origin_group.origin_group.id
 
   host_name          = data.azurerm_storage_account.storage.primary_web_host
-  origin_host_header = data.azurerm_storage_account.storage.primary_web_host
-
+  
   http_port  = 80
   https_port = 443
 
