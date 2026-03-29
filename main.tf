@@ -84,6 +84,10 @@ resource "azurerm_cdn_frontdoor_custom_domain" "domain" {
   name                     = "ghpro100-domain"
   cdn_frontdoor_profile_id = azurerm_cdn_frontdoor_profile.afd.id
   host_name                = "www.ghpro100.co.uk"
+
+  tls {
+    certificate_type = "ManagedCertificate"
+  }
 }
 
 # ROUTE
