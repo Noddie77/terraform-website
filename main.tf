@@ -5,6 +5,14 @@ terraform {
       version = "~> 4.0"
     }
   }
+
+  # BACKEND
+  backend "azurerm" {
+    resource_group_name  = "ghpro100-rg"
+    storage_account_name = "ghpro100web"
+    container_name       = "tfstate"
+    key                  = "terraform.tfstate"
+  }
 }
 
 provider "azurerm" {
