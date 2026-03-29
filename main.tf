@@ -99,8 +99,6 @@ resource "azurerm_cdn_frontdoor_route" "route" {
     azurerm_cdn_frontdoor_origin.origin.id
   ]
 
-  origin_path = "/"
-
   supported_protocols    = ["Http", "Https"]
   patterns_to_match      = ["/*"]
   forwarding_protocol    = "HttpsOnly"
