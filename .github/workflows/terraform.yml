@@ -28,4 +28,4 @@ jobs:
       run: terraform apply -auto-approve
 
     - name: Upload website files
-      run: az storage blob upload-batch --account-name ghpro100web --destination '$web' --source ./site --auth-mode login --overwrite
+      run: az storage blob upload-batch --account-name ghpro100web --destination '$web' --source ./site --auth-mode login --overwrite --content-cache-control "no-cache"
