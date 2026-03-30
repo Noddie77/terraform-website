@@ -79,15 +79,15 @@ resource "azurerm_cdn_frontdoor_origin" "origin" {
 }
 
 # CUSTOM DOMAIN
-resource "azurerm_cdn_frontdoor_custom_domain" "domain" {
-  name                     = "www-ghpro100-co-uk-0849"
-  cdn_frontdoor_profile_id = azurerm_cdn_frontdoor_profile.afd.id
-  host_name                = "www.ghpro100.co.uk"
-
-  tls {
-    certificate_type = "ManagedCertificate"
-  }
-}
+#resource "azurerm_cdn_frontdoor_custom_domain" "domain" {
+#  name                     = "www-ghpro100-co-uk-0849"
+#  cdn_frontdoor_profile_id = azurerm_cdn_frontdoor_profile.afd.id
+#  host_name                = "www.ghpro100.co.uk"
+#
+#  tls {
+#    certificate_type = "ManagedCertificate"
+#  }
+#}
 
 # ROUTE
 resource "azurerm_cdn_frontdoor_route" "route" {
